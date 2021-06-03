@@ -1,0 +1,220 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{8B15D052-6AD2-479C-A4FD-B69257EC3BA1}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Irene.Solutions.Edi.Babel</RootNamespace>
+    <AssemblyName>Irene.Solutions.Edi.Babel</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>bin\Debug\Irene.Solutions.Edi.Babel.xml</DocumentationFile>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Src\Facturae\AccountChoiceType.cs" />
+    <Compile Include="Src\Facturae\AccountType.cs" />
+    <Compile Include="Src\Facturae\Context.cs" />
+    <Compile Include="Src\Facturae\CountryType.cs" />
+    <Compile Include="Src\Facturae\CurrencyCodeType.cs" />
+    <Compile Include="Src\Facturae\Facturae.cs" />
+    <Compile Include="Src\Facturae\InvoiceIssuerTypeType.cs" />
+    <Compile Include="Src\Facturae\InvoiceLineBaseType.cs" />
+    <Compile Include="Src\Facturae\InvoiceTotalsBaseType.cs" />
+    <Compile Include="Src\Facturae\ModalityType.cs" />
+    <Compile Include="Src\Facturae\PersonTypeCodeType.cs" />
+    <Compile Include="Src\Facturae\ResidenceTypeCodeType.cs" />
+    <Compile Include="Src\Facturae\SchemaVersionType.cs" />
+    <Compile Include="Src\Facturae\Signature\Facturae.cs" />
+    <Compile Include="Src\Facturae\Signature\Xades\Cert.cs" />
+    <Compile Include="Src\Facturae\Signature\Xades\CertDigest.cs" />
+    <Compile Include="Src\Facturae\Signature\Xades\DigestMethod.cs" />
+    <Compile Include="Src\Facturae\Signature\Xades\IssuerSerial.cs" />
+    <Compile Include="Src\Facturae\Signature\Xades\ReferenceCertificate.cs" />
+    <Compile Include="Src\Facturae\Signature\Xades\ReferenceContent.cs" />
+    <Compile Include="Src\Facturae\Signature\Xades\ReferenceSignedProperties.cs" />
+    <Compile Include="Src\Facturae\Signature\Xades\SignaturePolicyIdentifier.cs" />
+    <Compile Include="Src\Facturae\Signature\Xades\SignatureValue.cs" />
+    <Compile Include="Src\Facturae\Signature\Xades\SignedDataObjectProperties.cs" />
+    <Compile Include="Src\Facturae\Signature\Xades\SignedInfo.cs" />
+    <Compile Include="Src\Facturae\Signature\Xades\SignerRole.cs" />
+    <Compile Include="Src\Facturae\Signature\Xades\SignedSignatureProperties.cs" />
+    <Compile Include="Src\Facturae\Signature\Xades\Object.cs" />
+    <Compile Include="Src\Facturae\Signature\Xades\KeyValue.cs" />
+    <Compile Include="Src\Facturae\Signature\Xades\RSAKeyValue.cs" />
+    <Compile Include="Src\Facturae\Signature\Xades\X509Data.cs" />
+    <Compile Include="Src\Facturae\Signature\Xades\KeyInfo.cs" />
+    <Compile Include="Src\Facturae\Signature\Xades\Signer.cs" />
+    <Compile Include="Src\Facturae\Signature\Xades\Util.cs" />
+    <Compile Include="Src\Facturae\Signature\Xml\ItemList.cs" />
+    <Compile Include="Src\Facturae\Signature\Xml\Element.cs" />
+    <Compile Include="Src\Facturae\Signature\Xml\AttributeList.cs" />
+    <Compile Include="Src\Facturae\Signature\Xml\Attribute.cs" />
+    <Compile Include="Src\Facturae\Signature\Xml\ElementList.cs" />
+    <Compile Include="Src\Facturae\Signature\Xml\Etag.cs" />
+    <Compile Include="Src\Facturae\Signature\Xml\Stag.cs" />
+    <Compile Include="Src\Facturae\V31\InvoiceLineTypeTax.cs" />
+    <Compile Include="Src\Facturae\V31\ReimbursableExpensesType.cs" />
+    <Compile Include="Src\Facturae\V31\TaxOutputType.cs" />
+    <Compile Include="Src\Facturae\V322\FileHeaderType.cs" />
+    <Compile Include="Src\Facturae\V32\SpecialTaxableEventType.cs" />
+    <Compile Include="Src\Facturae\EmpresaType.cs" />
+    <Compile Include="Src\Facturae\V30\FactoringAssignmentDataType.cs" />
+    <Compile Include="Src\Facturae\V30\Facturae.cs" />
+    <Compile Include="Src\Facturae\V30\FileHeaderType.cs" />
+    <Compile Include="Src\Facturae\V30\InvoiceLineType.cs" />
+    <Compile Include="Src\Facturae\V30\InvoiceTotalsType.cs" />
+    <Compile Include="Src\Facturae\V30\InvoiceType.cs" />
+    <Compile Include="Src\Facturae\V30\PaymentDetailsType.cs" />
+    <Compile Include="Src\Facturae\V30\PaymentMeansType.cs" />
+    <Compile Include="Src\Facturae\V31\FactoringAssignmentDataType.cs" />
+    <Compile Include="Src\Facturae\V31\Facturae.cs" />
+    <Compile Include="Src\Facturae\V31\FileHeaderType.cs" />
+    <Compile Include="Src\Facturae\V31\InvoiceLineType.cs" />
+    <Compile Include="Src\Facturae\V31\InvoiceTotalsType.cs" />
+    <Compile Include="Src\Facturae\V31\InvoiceType.cs" />
+    <Compile Include="Src\Facturae\V31\PaymentDetailsType.cs" />
+    <Compile Include="Src\Facturae\V31\PaymentMeansType.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Src\Facturae\AssigneeType.cs" />
+    <Compile Include="Src\Facturae\V322\FactoringAssignmentDataType.cs" />
+    <Compile Include="Src\Facturae\V322\FactoringAssignmentDocumentType.cs" />
+    <Compile Include="Src\Facturae\AdministrativeCentreType.cs" />
+    <Compile Include="Src\Facturae\BusinessType.cs" />
+    <Compile Include="Src\Facturae\CorrectiveType.cs" />
+    <Compile Include="Src\Facturae\ExchangeRateDetailsType.cs" />
+    <Compile Include="Src\Facturae\AmountsWithheldType.cs" />
+    <Compile Include="Src\Facturae\ChargeType.cs" />
+    <Compile Include="Src\Facturae\DeliveryNoteType.cs" />
+    <Compile Include="Src\Facturae\DiscountType.cs" />
+    <Compile Include="Src\Facturae\AdditionalDataType.cs" />
+    <Compile Include="Src\Facturae\AttachmentType.cs" />
+    <Compile Include="Src\Facturae\CanonicalizationMethodType.cs" />
+    <Compile Include="Src\Facturae\ExtensionsType.cs" />
+    <Compile Include="Src\Facturae\DigestMethodType.cs" />
+    <Compile Include="Src\Facturae\DSAKeyValueType.cs" />
+    <Compile Include="Src\Facturae\V322\Facturae.cs" />
+    <Compile Include="Src\Facturae\ThirdPartyType.cs" />
+    <Compile Include="Src\Facturae\ObjectType.cs" />
+    <Compile Include="Src\Facturae\SPKIDataType.cs" />
+    <Compile Include="Src\Facturae\PGPDataType.cs" />
+    <Compile Include="Src\Facturae\PGPKeyElementName.cs" />
+    <Compile Include="Src\Facturae\X509IssuerSerialType.cs" />
+    <Compile Include="Src\Facturae\X509DataElementName.cs" />
+    <Compile Include="Src\Facturae\X509DataType.cs" />
+    <Compile Include="Src\Facturae\KeyInfoElementName.cs" />
+    <Compile Include="Src\Facturae\KeyInfoType.cs" />
+    <Compile Include="Src\Facturae\KeyValueType.cs" />
+    <Compile Include="Src\Facturae\RetrievalMethodType.cs" />
+    <Compile Include="Src\Facturae\RSAKeyValueType.cs" />
+    <Compile Include="Src\Facturae\SignatureValueType.cs" />
+    <Compile Include="Src\Facturae\TransformType.cs" />
+    <Compile Include="Src\Facturae\ReferenceType.cs" />
+    <Compile Include="Src\Facturae\SignatureMethodType.cs" />
+    <Compile Include="Src\Facturae\SignatureType.cs" />
+    <Compile Include="Src\Facturae\SignedInfoType.cs" />
+    <Compile Include="Src\Facturae\V322\InvoiceLineType.cs" />
+    <Compile Include="Src\Facturae\SpecialTaxableEventCodeType.cs" />
+    <Compile Include="Src\Facturae\V322\SpecialTaxableEventType.cs" />
+    <Compile Include="Src\Facturae\UnitOfMeasureType.cs" />
+    <Compile Include="Src\Facturae\V322\InvoiceLineTypeTax.cs" />
+    <Compile Include="Src\Facturae\V322\PaymentInKindType.cs" />
+    <Compile Include="Src\Facturae\PeriodDates.cs" />
+    <Compile Include="Src\Facturae\V322\TaxOutputType.cs" />
+    <Compile Include="Src\Facturae\PaymentOnAccountType.cs" />
+    <Compile Include="Src\Facturae\V322\ReimbursableExpensesType.cs" />
+    <Compile Include="Src\Facturae\SubsidyType.cs" />
+    <Compile Include="Src\Facturae\InvoiceIssueDataType.cs" />
+    <Compile Include="Src\Facturae\V322\InvoiceTotalsType.cs" />
+    <Compile Include="Src\Facturae\PlaceOfIssueType.cs" />
+    <Compile Include="Src\Facturae\LanguageCodeType.cs" />
+    <Compile Include="Src\Facturae\InvoiceHeaderType.cs" />
+    <Compile Include="Src\Facturae\V322\InvoiceType.cs" />
+    <Compile Include="Src\Facturae\ReasonCodeType.cs" />
+    <Compile Include="Src\Facturae\ReasonDescriptionType.cs" />
+    <Compile Include="Src\Facturae\InstallmentType.cs" />
+    <Compile Include="Src\Facturae\PaymentMeansType.cs" />
+    <Compile Include="Src\Facturae\RoleTypeCodeType.cs" />
+    <Compile Include="Src\Facturae\PartiesType.cs" />
+    <Compile Include="Src\Facturae\V322\RepositoryType.cs" />
+    <Compile Include="Src\Facturae\ManifestType.cs" />
+    <Compile Include="Src\Facturae\SignaturePropertiesType.cs" />
+    <Compile Include="Src\Facturae\SignaturePropertyType.cs" />
+    <Compile Include="Src\Facturae\TransformsType.cs" />
+    <Compile Include="Src\Facturae\V32\FactoringAssignmentDataType.cs" />
+    <Compile Include="Src\Facturae\V32\Facturae.cs" />
+    <Compile Include="Src\Facturae\V32\FileHeaderType.cs" />
+    <Compile Include="Src\Facturae\V32\InvoiceLineType.cs" />
+    <Compile Include="Src\Facturae\V32\InvoiceLineTypeTax.cs" />
+    <Compile Include="Src\Facturae\V32\InvoiceTotalsType.cs" />
+    <Compile Include="Src\Facturae\V32\InvoiceType.cs" />
+    <Compile Include="Src\Facturae\V32\PaymentMeansType.cs" />
+    <Compile Include="Src\Facturae\V32\ReimbursableExpensesType.cs" />
+    <Compile Include="Src\Facturae\V32\TaxOutputType.cs" />
+    <Compile Include="Src\Facturae\AddressType.cs" />
+    <Compile Include="Src\Facturae\AmountType.cs" />
+    <Compile Include="Src\Facturae\BatchType.cs" />
+    <Compile Include="Src\Facturae\ContactDetailsType.cs" />
+    <Compile Include="Src\Facturae\ImporteType.cs" />
+    <Compile Include="Src\Facturae\IndividualType.cs" />
+    <Compile Include="Src\Facturae\LegalEntityType.cs" />
+    <Compile Include="Src\Facturae\OverseasAddressType.cs" />
+    <Compile Include="Src\Facturae\RegistrationDataType.cs" />
+    <Compile Include="Src\Facturae\TaxIdentificationType.cs" />
+    <Compile Include="Src\Facturae\TaxType.cs" />
+    <Compile Include="Src\Facturae\TaxTypeCodeType.cs" />
+    <Compile Include="Src\Facturae\AttachmentCompressionAlgorithmType.cs" />
+    <Compile Include="Src\Facturae\AttachmentEncodingType.cs" />
+    <Compile Include="Src\Facturae\AttachmentFormatType.cs" />
+    <Compile Include="Src\Facturae\CorrectionMethodDescriptionType.cs" />
+    <Compile Include="Src\Facturae\CorrectionMethodType.cs" />
+    <Compile Include="Src\Facturae\InvoiceClassType.cs" />
+    <Compile Include="Src\Facturae\InvoiceDocumentTypeType.cs" />
+    <Compile Include="Src\Xml\XmlParser.cs" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <None Include="Specs\Facturae30.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Specs\Facturaev31.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Specs\Facturaev3_2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
