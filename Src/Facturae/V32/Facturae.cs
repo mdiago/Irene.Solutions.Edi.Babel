@@ -16,6 +16,7 @@ namespace Irene.Solutions.Edi.Babel.Facturae.V32
         [XmlElement(Form = XmlSchemaForm.Unqualified)]
         public PartiesType Parties { get; set; }
 
+        [XmlArray(Form = XmlSchemaForm.Unqualified)]
         [XmlArrayItem("Invoice", Form = XmlSchemaForm.Unqualified, IsNullable = false)]
         public InvoiceType[] Invoices { get; set; }
 
