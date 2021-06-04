@@ -6,6 +6,7 @@ using Irene.Solutions.Edi.Babel.Xml;
 using System.Text.RegularExpressions;
 using Irene.Solutions.Edi.Babel.Facturae.Signature.Xades;
 using System.Security.Cryptography.X509Certificates;
+using Irene.Solutions.Edi.Babel.Facturae.Ns;
 
 namespace Irene.Solutions.Edi.Babel.Facturae
 {
@@ -36,19 +37,20 @@ namespace Irene.Solutions.Edi.Babel.Facturae
         /// la instancia de facturae sin identación y sin
         /// saltos de línea, preparada para el hash.
         /// </summary>
+        /// <param name="indent">Indica si se debe utilizar indentación.</param> 
         /// <returns>La cadena del bloque facturae de
-        /// la instancia de facturae sin identación y sin
+        /// la instancia de facturae sin indentación y sin
         /// saltos de línea, preparada para el hash.</returns>
-        public string GetString()
+        public string GetString(bool indent = false)
         {
 
             Dictionary<string, string> namespaces = new Dictionary<string, string>()
             {
-                { "ds", "http://www.w3.org/2000/09/xmldsig#"},
-                { "fe", "http://www.facturae.es/Facturae/2009/v3.2/Facturae"},
+                { "ds", Namespaces.Xsig},
+                { "fe", Namespaces.GetNamespace(GetType())},
             };
 
-            var xml = XmlParser.GetString(this, namespaces, false);
+            var xml = XmlParser.GetString(this, namespaces, indent);
 
             return xml;
 

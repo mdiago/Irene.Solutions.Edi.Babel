@@ -101,11 +101,11 @@ namespace Irene.Solutions.Edi.Babel.Xml
         /// </summary>
         /// <param name="instance">Instancia de objeto a serializar.</param>
         /// <param name="path">Ruta al archivo xml a crear.</param>
-        public static void SaveAsXml(object instance, string path, bool emptyNs = false)
+        public static void SaveAsXml(object instance, string path, Dictionary<string, string> Ns = null)
         {
             XmlSerializer serializer = new XmlSerializer(instance.GetType());
 
-            if (emptyNs)
+            if (Ns == null)
             {
 
                 var xmlnsEmpty = new XmlSerializerNamespaces();
@@ -118,9 +118,15 @@ namespace Irene.Solutions.Edi.Babel.Xml
             }
             else
             {
+
+                var xmlNs = new XmlSerializerNamespaces();
+                
+                foreach (KeyValuePair<string, string> n in Ns)
+                    xmlNs.Add(n.Key, n.Value);
+
                 using (StreamWriter w = new StreamWriter(path))
                 {
-                    serializer.Serialize(w, instance);
+                    serializer.Serialize(w, instance, xmlNs);
                 }
             }
         }
@@ -177,6 +183,7 @@ namespace Irene.Solutions.Edi.Babel.Xml
         /// como archivo xml en una cadena.
         /// </summary>
         /// <param name="instance">Instancia de objeto a serializar.</param>
+        /// <param name="namespaces">Espacios de nombres.</param> 
         /// <param name="indent">Indica si se debe utilizar indentación.</param>
         /// <returns>string con el archivo xml.</returns>
         public static string GetString(object instance, Dictionary<string, string> namespaces, bool indent = false)

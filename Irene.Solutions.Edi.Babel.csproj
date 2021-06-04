@@ -58,6 +58,7 @@
     <Compile Include="Src\Facturae\InvoiceLineBaseType.cs" />
     <Compile Include="Src\Facturae\InvoiceTotalsBaseType.cs" />
     <Compile Include="Src\Facturae\ModalityType.cs" />
+    <Compile Include="Src\Facturae\Ns\Namespaces.cs" />
     <Compile Include="Src\Facturae\PersonTypeCodeType.cs" />
     <Compile Include="Src\Facturae\ResidenceTypeCodeType.cs" />
     <Compile Include="Src\Facturae\SchemaVersionType.cs" />
