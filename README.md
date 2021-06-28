@@ -1,5 +1,5 @@
 # Irene.Solutions.Edi.Babel
-Biblioteca para la gestión de documentos Facturae... Generar una factura electrónica en formato factura y firmarla sería tan sencillo como:
+Biblioteca para la gestión de documentos Facturae... Generar una factura electrónica en formato facturae y firmarla sería tan sencillo como:
 
 ```C#
           
