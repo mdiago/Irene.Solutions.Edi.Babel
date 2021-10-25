@@ -79,7 +79,7 @@ namespace Irene.Solutions.Edi.Babel.Facturae.Signature.Xades
 
             X509Data = (X509Data)AddElement(new X509Data());
             KeyValue = (KeyValue)AddElement(new KeyValue());
-
+            
             X509Data.X509Certificate = Util.ToBase64(Certificate.GetRawCertData()); 
             KeyValue.RSAKeyValue.Modulus = Util.ToBase64(GetCertificateModulus());
             KeyValue.RSAKeyValue.Exponent = Convert.ToBase64String(((RSACryptoServiceProvider)Certificate.PublicKey.Key).ExportParameters(false).Exponent);
