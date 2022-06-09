@@ -56,6 +56,17 @@ namespace Irene.Solutions.Edi.Babel.Facturae.Signature.Xades
         public X509Data X509Data { get; set; }
 
         /// <summary>
+        /// Datos certificado.
+        /// </summary>
+        public X509Data X509Data2 { get; set; }
+
+        /// <summary>
+        /// Datos certificado.
+        /// </summary>
+        public X509Data X509Data3 { get; set; }
+
+
+        /// <summary>
         /// Datos clave firma.
         /// </summary>
         public KeyValue KeyValue { get; set; }
@@ -77,12 +88,33 @@ namespace Irene.Solutions.Edi.Babel.Facturae.Signature.Xades
             AddAttribute("Id", "Certificate" + IdCertificate);
             Certificate = certificate;
 
-            X509Data = (X509Data)AddElement(new X509Data());
-            KeyValue = (KeyValue)AddElement(new KeyValue());
+            X509Data = (X509Data)AddElement(new X509Data());            
             
-            X509Data.X509Certificate = Util.ToBase64(Certificate.GetRawCertData()); 
+            X509Data.X509Certificate = Util.ToBase64(Certificate.GetRawCertData());           
+
+            X509Chain ch = new X509Chain();
+            ch.ChainPolicy.RevocationMode = X509RevocationMode.Online;
+            ch.Build(certificate);
+
+            if (ch.ChainElements.Count > 1) 
+            {
+
+                for (int c = 1; c < ch.ChainElements.Count; c++) 
+                {
+
+                    var el = new Element("ds:X509Certificate");
+                    el.Content = Util.ToBase64(ch.ChainElements[c].Certificate.GetRawCertData());
+                    X509Data.AddElement(el);
+
+                }
+
+            }
+
+            KeyValue = (KeyValue)AddElement(new KeyValue());
+
             KeyValue.RSAKeyValue.Modulus = Util.ToBase64(GetCertificateModulus());
             KeyValue.RSAKeyValue.Exponent = Convert.ToBase64String(((RSACryptoServiceProvider)Certificate.PublicKey.Key).ExportParameters(false).Exponent);
+
         }   
 
         /// <summary>
