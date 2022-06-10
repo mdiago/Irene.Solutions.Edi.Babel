@@ -153,8 +153,10 @@ namespace Irene.Solutions.Edi.Babel.Facturae.Signature.Xades
         /// <param name="idSignedProperties"></param>
         /// <param name="certificate"></param>
         /// <param name="idCertificate"></param>
+        /// <param name="nsVersion">Versión facturae. Por defecto 3.2</param>
         public Signer(string xml, string idSignature, string idObjRef, 
-            string idSignedProperties, X509Certificate2 certificate, string idCertificate)
+            string idSignedProperties, X509Certificate2 certificate, string idCertificate,
+            string nsVersion = "http://www.facturae.es/Facturae/2009/v3.2/Facturae")
         {
 
             IdSignature = idSignature;
@@ -162,7 +164,7 @@ namespace Irene.Solutions.Edi.Babel.Facturae.Signature.Xades
             IdSignedProperties = idSignedProperties;
             IdCertificate = idCertificate;
             _Certificate = certificate;
-            _Facturae = new Facturae();
+            _Facturae = new Facturae(nsVersion);
 
             // Únicamente el cuerpo
 
@@ -179,19 +181,21 @@ namespace Irene.Solutions.Edi.Babel.Facturae.Signature.Xades
             xmlTransform.LoadInput(myDoc);
             MemoryStream ms = (MemoryStream)xmlTransform.GetOutput(typeof(MemoryStream));
 
-            _XmlContent = Encoding.UTF8.GetString(ms.ToArray());
+            var bufferXml = ms.ToArray();
 
+            _XmlContent = Encoding.UTF8.GetString(bufferXml);
+            
             HashContent = GetStringUTF8HashToBase64(_XmlContent);
 
             KeyInfo fKeyInfo = new KeyInfo(_Certificate, IdCertificate);
             Object fObject = new Object(IdSignature, IdObjRef, IdSignedProperties, _Certificate);
 
 
-            fKeyInfo.AddAttributeAt("xmlns:fe", "http://www.facturae.es/Facturae/2009/v3.2/Facturae", 0);
+            fKeyInfo.AddAttributeAt("xmlns:fe", _Facturae.GetVersionNamespace(), 0);
             fKeyInfo.AddAttributeAt("xmlns:etsi", "http://uri.etsi.org/01903/v1.3.2#", 0);
             fKeyInfo.AddAttributeAt("xmlns:ds", "http://www.w3.org/2000/09/xmldsig#", 0);
 
-            fObject.SignedProperties.AddAttributeAt("xmlns:fe", "http://www.facturae.es/Facturae/2009/v3.2/Facturae", 0);
+            fObject.SignedProperties.AddAttributeAt("xmlns:fe", _Facturae.GetVersionNamespace(), 0);
             fObject.SignedProperties.AddAttributeAt("xmlns:etsi", "http://uri.etsi.org/01903/v1.3.2#", 0);
             fObject.SignedProperties.AddAttributeAt("xmlns:ds", "http://www.w3.org/2000/09/xmldsig#", 0);
 
@@ -206,6 +210,7 @@ namespace Irene.Solutions.Edi.Babel.Facturae.Signature.Xades
             _Facturae.AddElement(_Signature);
 
             HashKeyInfo = ComputeHashOfTag(_Facturae, "ds:KeyInfo", out _XmlCanKeyInfo);
+
             HashSignedProperties = ComputeHashOfTag(_Facturae, "etsi:SignedProperties",
                 out _XmlCanSignedProperties, false);
 
@@ -242,7 +247,7 @@ namespace Irene.Solutions.Edi.Babel.Facturae.Signature.Xades
             SignedInfo.ReferenceContent.DigestValue = HashContent;
             _Signature.AddElementFirst(SignedInfo);
 
-            SignedInfo.AddAttributeAt("xmlns:fe", "http://www.facturae.es/Facturae/2009/v3.2/Facturae", 0);
+            SignedInfo.AddAttributeAt("xmlns:fe", _Facturae.GetVersionNamespace(), 0);
             SignedInfo.AddAttributeAt("xmlns:etsi", "http://uri.etsi.org/01903/v1.3.2#", 0);
             SignedInfo.AddAttributeAt("xmlns:ds", "http://www.w3.org/2000/09/xmldsig#", 0);
 

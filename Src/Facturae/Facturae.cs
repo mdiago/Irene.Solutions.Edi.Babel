@@ -79,11 +79,22 @@ namespace Irene.Solutions.Edi.Babel.Facturae
             var xmlFacturae = GetString();
 
             Signer signer = new Signer(xmlFacturae, idSignature, 
-                idObjRef, idSignedProperties, certificate, idCertificate);
+                idObjRef, idSignedProperties, certificate, idCertificate,
+                GetVersionNamespace());
 
             signer.GetSignedInfo(idSignedInfo, signedPropertiesID, idSignatureValue, idSignatureObject);
 
             return signer.Signed;
+
+        }
+
+        /// <summary>
+        /// Devuelve el espacio de nombres de la versión.
+        /// </summary>
+        /// <returns>Espacio de nombres de la versión.</returns>
+        public virtual string GetVersionNamespace() 
+        {
+            return "http://www.facturae.es/Facturae/2007/v3.0/Facturae";
         }
 
     }

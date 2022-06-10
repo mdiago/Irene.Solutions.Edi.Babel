@@ -21,6 +21,16 @@ namespace Irene.Solutions.Edi.Babel.Facturae.V322
         [XmlArrayItem("Invoice", Form = XmlSchemaForm.Unqualified, IsNullable = false)]
         public InvoiceType[] Invoices { get; set; }
 
+        /// <summary>
+        /// Devuelve el espacio de nombres de la versión.
+        /// </summary>
+        /// <returns>Espacio de nombres de la versión.</returns>
+        public override string GetVersionNamespace()
+        {
+            return "http://www.facturae.gob.es/formato/Versiones/Facturaev3_2_2.xml";
+        }
+
+
     }
 
 

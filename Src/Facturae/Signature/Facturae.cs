@@ -8,14 +8,28 @@ namespace Irene.Solutions.Edi.Babel.Facturae.Signature
     /// </summary>
     public class Facturae : Element
     {
+        string _NsVersion;
 
         /// <summary>
         /// Constructor
         /// </summary>
-        public Facturae() : base("fe:Facturae")
+        /// <param name="nsVersion">Por defecto versión 3.2</param>
+        public Facturae(string nsVersion = "http://www.facturae.es/Facturae/2009/v3.2/Facturae") : base("fe:Facturae")
         {
             AddAttribute("xmlns:ds", "http://www.w3.org/2000/09/xmldsig#");
-            AddAttribute("xmlns:fe", "http://www.facturae.es/Facturae/2009/v3.2/Facturae");
+            AddAttribute("xmlns:fe", nsVersion);
+            _NsVersion = nsVersion;
         }
+
+        /// <summary>
+        /// Devuelve el espacio de nombres de la versión.
+        /// </summary>
+        /// <returns>Espacio de nombres de la versión.</returns>
+        public virtual string GetVersionNamespace()
+        {
+            return _NsVersion;
+        }
+
+
     }
 }
